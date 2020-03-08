@@ -1,7 +1,7 @@
 import stocks from '../../data/stocks.js'
 
 const state = {
-    stocks: []
+    stocks: [],
 };
 
 const mutations = {
@@ -12,6 +12,16 @@ const mutations = {
         state.stocks.forEach(stock => {
             stock.price = Math.round(stock.price * ( 1 + Math.random() - 0.5))
         });
+    },
+    'SET_STOCK_INFO' (state, symbolInfo) {
+        state.stocks.forEach(stock => {
+            console.log(stock)
+            if(stock.symbol == symbolInfo.symbol){
+                console.log(stock.info)
+                stock.info = symbolInfo
+                console.log(stock.info)
+            }
+        })
     }
 };
 

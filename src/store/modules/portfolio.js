@@ -47,7 +47,8 @@ const getters = {
                 id: stock.id,
                 quantity: stock.quantity,
                 name: record.name,
-                price: record.price
+                price: record.price,
+                symbol: stock.symbol
             }
         });
     },

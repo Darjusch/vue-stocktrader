@@ -2,9 +2,11 @@
     <div class="col-sm-5 col-md-3">
         <div class="panel panel-success">
             <div class="panel panel-heading">
-                <h3 class="panel-title">
+                <h3 class="panel-title clearfix">
                 {{ stock.name }}
-                <small>Price: {{ stock.price }}</small>
+                <small>(Symbol: {{ stock.symbol }} | Price: {{ stock.price }})</small>
+                    <router-link :to="{ name: 'Info', params: { symbolInfo } }" class="btn-circle pull-right ">Info</router-link> 
+                    <!-- //@click="requestInfo(stock.symbol) -->
                 </h3>
             </div>
             <div class="panel-body">
@@ -35,7 +37,8 @@ export default {
     props: ['stock'],
     data: function() {
         return {
-            quantity: 0
+            quantity: 0,
+            symbolInfo: this.stock
             }
     },
     computed: {
@@ -49,12 +52,19 @@ export default {
                 stockID: this.stock.id,
                 stockName: this.stock.name, 
                 stockPrice: this.stock.price,
-                quantity: Number(this.quantity)
+                quantity: Number(this.quantity),
+                symbol: this.stock.symbol
             };
             this.$store.dispatch('buyStock', order)
             this.quantity = 0
            
-        },
+        }
+        // ,
+        // requestInfo(symbol) {
+        //     console.log("reached button function " + symbol)
+        //     this.$store.dispatch('getInfo', symbol)
+        // }
+        
 
     },
 
@@ -63,5 +73,16 @@ export default {
 <style scoped>
     .danger {
         border: 1px solid red;
+    }
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+        background-color: #5bc0de;
+        color: #fff;
     }
 </style>

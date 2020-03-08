@@ -4,7 +4,7 @@
             <div class="panel panel-heading">
                 <h3 class="panel-title">
                 {{ stock.name }}
-                <small>( Price: {{ stock.price }} | Quantity: {{ stock.quantity }} )</small>
+                <small>(Price: {{ stock.price }} | Quantity: {{ stock.quantity }} )</small>
                 </h3>
             </div>
             <div class="panel-body">
@@ -50,7 +50,6 @@ export default {
                 stockPrice: this.stock.price,
                 quantity: this.quantity,
             };
-            console.log(order)
             this.placeSellOrder(order);
             this.quantity = 0
 

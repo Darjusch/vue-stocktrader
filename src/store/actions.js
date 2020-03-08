@@ -7,7 +7,6 @@ export const loadData = ({ commit }) => {
             const stock = data.stocks;
             const funds = data.funds;
             const stockPortfolio = data.stockPortfolio;
-            console.log(data)
             const portfolio = {
                 stockPortfolio,
                 funds
@@ -17,4 +16,25 @@ export const loadData = ({ commit }) => {
 
         }
     });
-}
+};
+export const getInfo = ({ commit }, symbol ) => {
+    console.log("getInfo in action")
+    Vue.http.get('https://finnhub.io/api/v1/stock/price-target?symbol='+ symbol +'&token=bphm80vrh5rablt51mlg')
+    .then(response => response.json())
+    .then( data => {
+      if (data) {
+        console.log(data)
+        const symbolInfo = {
+            "lastUpdated": data.lastUpdated,
+            "symbol": data.symbol,
+            "targetHigh": data.targetHigh,
+            "targetLow": data.targetLow,
+            "targetMean": data.targetMean,
+            "targetMedian": data.targetMedian
+        }
+        console.log(symbolInfo)
+        commit('SET_STOCK_INFO', symbolInfo)
+      }
+    }
+    )
+  }

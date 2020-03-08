@@ -56,7 +56,6 @@ export default {
           this.randomizeStocks();
     },
     saveData(){
-      console.log("save")
       const data = {
         funds: this.$store.getters.funds,
         stockPortfolio: this.$store.getters.stockPortfolio,
@@ -65,7 +64,6 @@ export default {
       this.$http.put('data.json', data);
     },
     loadData(){
-      console.log("load")
       this.load('loadData')
     }
   }
@@ -75,3 +73,4 @@ export default {
 <style scoped>
 
 </style>
+

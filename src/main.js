@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
-Vue.http.options.root = 'https://vue-stocktrader-darjusch.firebaseio.com/'
+//Vue.http.options.root = 'https://vue-stocktrader-darjusch.firebaseio.com/'
 
 Vue.config.productionTip = false
 Vue.filter('currency', (value) =>{
